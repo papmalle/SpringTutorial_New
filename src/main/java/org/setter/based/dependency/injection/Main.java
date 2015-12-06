@@ -13,6 +13,7 @@ public class Main {
 		
 		SimpleMovieLister  simpleMovieLister = context.getBean("simpleMovieSetterDI", SimpleMovieLister.class);
 		simpleMovieLister.testSetterDI();
+		System.out.println("Valeur ");
 
 	}
 
