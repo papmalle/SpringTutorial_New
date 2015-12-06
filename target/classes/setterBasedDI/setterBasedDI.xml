@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+	<bean id="simpleMovieSetterDI" class="org.setter.based.dependency.injection.SimpleMovieLister">
+		<property name="movieFinder" ref="refMovieFinder" /> <!-- property <Name> : juste le nom de la methode  dans la class SimpleMovieLister: public void setMovieFinder -->
+		 <!-- juste le nom de la methode sans le get -->		
+		 <property name="integerProperty" value="200" />
+	</bean>
+
+	<bean id="refMovieFinder" class="org.setter.based.dependency.injection.MovieFinder" />
+
+</beans>
+
+
+
+<!-- Les differentes façon de declarer les properties -->
+
+<!-- 
+	# setter injection using the nested ref element
+	<bean>
+		<property name="movieFinder"> 
+			<ref bean="refMovieFinder" />
+     	</property> 
+	</bean>
+	
+	# setter injection using the neater ref attribute ( C'est la même chose comme au dessus)
+	<property name="movieFinder" ref="refMovieFinder" /> 
+	
+	<bean id="refMovieFinder" class="org.setter.based.dependency.injection.MovieFinder" />
+ -->

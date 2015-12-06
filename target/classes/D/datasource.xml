@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>  <!-- default-lazy-init="true"   -->
+<beans default-lazy-init="true"    xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="myDataSource" class="D.org.springframework.dependencies.BasicDataSource" depends-on="Lool"  lazy-init="true" scope="prototype">
+	
+	<!-- lazy-init="true" , default-lazy-init="true (parent beans): l'instance du bean est crée lors de premier appel et non pendant le demarrage de l'application -->
+		<!-- results in a setDriverClassName(String) call -->
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/mydb" />
+		<property name="username" value="root" />
+		<property name="password">
+			<idref bean="Lool"/>
+		</property>
+		<property name="lool" ref="Lool"/>
+	</bean>
+	
+	<bean id="Lool" class="D.org.springframework.dependencies.LoolClass" lazy-init="true" scope="prototype">
+		<property name="properties">
+			<value>
+			 jdbc.driver.className=com.mysql.jdbc.DriverLool
+             jdbc.url=jdbc:mysql://localhost:3306/mydbLool
+		  </value>
+		</property>
+	</bean>
+
+</beans>

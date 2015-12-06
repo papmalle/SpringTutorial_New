@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="simpleMovie"	class="org.contructor.based.dependency.injection.SimpleMovieLister">
+		<constructor-arg ref="movieFinder" />
+	</bean>
+
+	<bean id="movieFinder" class="org.contructor.based.dependency.injection.MovieFinder" />
+	
+	<bean id="exampleBean" class="org.contructor.based.dependency.injection.ExampleBean2">
+		<constructor-arg type="int" index="0" value="1990" />
+		<constructor-arg type="java.lang.String" index="1"	value=" La reponse à toutes les questions " />
+    </bean>
+
+	<!-- more bean definitions for services go here -->
+
+</beans>
