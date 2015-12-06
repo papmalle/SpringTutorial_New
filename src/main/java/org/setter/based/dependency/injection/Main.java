@@ -8,6 +8,7 @@ public class Main {
 
 	private static ApplicationContext context;
 	int totoPapmalle_Dev =0;
+	int ki=82;
 	public static void main(String[] args) {
 		context = new ClassPathXmlApplicationContext("setterBasedDI/setterBasedDI.xml");
 		
