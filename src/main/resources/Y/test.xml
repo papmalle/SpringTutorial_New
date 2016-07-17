@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="test" class="Y.Test" lazy-init="false" autowire="constructor" >
+        <property name="nom" value="MALLE"/>
+        <property name="prenom" value="Yaya"/>
+        <!--
+            Autowired permet d'ecrire moins des <property name = "" > et <construtor-arg ref >
+            quand tu mets le type autowire="constructor", tu n'as plus besoin de faire <constructor-arg ref="idUtilis"/>
+            car grace Spring autowired , il va chercher la definition de la bean correcpondante
+            enfontion du type qui Utilis et qui correspond au  bean id =idUtilis" definit ci-dessous
+        -->
+    </bean>
+
+  <bean id="idUtilis" class="Y.Utilis">    <!--  autowire-candidate="false"> permet a ce bean de ne pas etre autowireded c'est a dire l'autowired en haut ne vas pas staisfaire la creation de ce bean -->
+        <property name="x" value="1500"/>
+        <property name="y" value="100"/>
+    </bean>
+</beans>
